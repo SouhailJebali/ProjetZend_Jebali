@@ -1,0 +1,31 @@
+<?php
+ // module/Album/view/album/album/index.phtml:
+
+ $title = 'My bdd';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+     <a href="<?php echo $this->url('bdd', array('action'=>'add'));?>">Add new bdd</a>
+ </p>
+
+ <table class="table">
+ <tr>
+     <th>id</th>
+     <th>prenom</th>
+     <th>nom</th>
+ </tr>
+ <?php foreach ($bdds as $bdd) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($bdd->id);?></td>
+     <td><?php echo $this->escapeHtml($bdd->prenom);?></td>
+	 <td><?php echo $this->escapeHtml($bdd->nom);?></td>
+     <td>
+         <a href="<?php echo $this->url('bdd',
+             array('action'=>'edit', 'id' => $bdd->id));?>">Edit</a>
+         <a href="<?php echo $this->url('bdd',
+             array('action'=>'delete', 'id' => $bdd->id));?>">Delete</a>
+     </td>
+ </tr>
+ <?php endforeach; ?>
+ </table>
